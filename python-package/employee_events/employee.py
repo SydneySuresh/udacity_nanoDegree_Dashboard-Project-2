@@ -23,11 +23,11 @@ class Employee(QueryBase):
         # This query should return the data
         # for all employees in the database
 
-        query_str = """SELECT
+        query_str = f"""SELECT
                         CONCAT (first_name, " ", last_name) AS full_name,
                         employee_id
                     FROM
-                        employee"""
+                        {self.name}"""
         return self.query(query_str)
 
     # Define a method called `username`
@@ -47,8 +47,8 @@ class Employee(QueryBase):
                         CONCAT (first_name, " ", last_name) AS full_name,
                         employee_id
                     FROM
-                        employee
-                    WHERE employee_id = {id}"""
+                        {self.name}
+                    WHERE {self.name}_id = {id}"""
         return self.query(query_str)
 
     # Below is method with an SQL query
