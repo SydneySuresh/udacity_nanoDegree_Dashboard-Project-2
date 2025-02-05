@@ -3,19 +3,20 @@ import matplotlib.pyplot as plt
 
 # Import QueryBase, Employee, Team from employee_events
 #### YOUR CODE HERE
-from employee_events import QueryBase, Employee, Team
+from employee_events.employee import Employee
+from employee_events.team import Team
 
 # import the load_model function from the utils.py file
 #### YOUR CODE HERE
-from utils import load_model
+from .utils import load_model
 
 """
 Below, we import the parent classes
 you will use for subclassing
 """
-from base_components import Dropdown, BaseComponent, Radio, MatplotlibViz, DataTable
+from .base_components import Dropdown, BaseComponent, Radio, MatplotlibViz, DataTable
 
-from combined_components import FormGroup, CombinedComponent
+from .combined_components import FormGroup, CombinedComponent
 
 
 # Create a subclass of base_components/dropdown
@@ -119,59 +120,60 @@ class LineChart(MatplotlibViz):
         # Create a subclass of base_components/MatplotlibViz
         # called `BarChart`
 
-    class BarChart(MatplotlibViz):
 
-        # Create a `predictor` class attribute
-        # assign the attribute to the output
-        # of the `load_model` utils function
+class BarChart(MatplotlibViz):
+
+    # Create a `predictor` class attribute
+    # assign the attribute to the output
+    # of the `load_model` utils function
+    #### YOUR CODE HERE
+    predictor = load_model()
+
+    # Overwrite the parent class `visualization` method
+    # Use the same parameters as the parent
+    def visualization(self, asset_id, model):
+
+        # Using the model and asset_id arguments
+        # pass the `asset_id` to the `.model_data` method
+        # to receive the data that can be passed to the machine
+        # learning model
+        data = model.model_data(asset_id)
+
+        # Using the predictor class attribute
+        # pass the data to the `predict_proba` method
+        # Index the second column of predict_proba output
+        # The shape should be (<number of records>, 1)
         #### YOUR CODE HERE
-        predictor = load_model()
+        proba = self.predictor.predict_proba(data)[:, 1]
 
-        # Overwrite the parent class `visualization` method
-        # Use the same parameters as the parent
-        def visualization(self, asset_id, model):
-
-            # Using the model and asset_id arguments
-            # pass the `asset_id` to the `.model_data` method
-            # to receive the data that can be passed to the machine
-            # learning model
-            data = model.model_data(asset_id)
-
-            # Using the predictor class attribute
-            # pass the data to the `predict_proba` method
-            # Index the second column of predict_proba output
-            # The shape should be (<number of records>, 1)
+        # Below, create a `pred` variable set to
+        # the number we want to visualize
+        #
+        # If the model's name attribute is "team"
+        # We want to visualize the mean of the predict_proba output
+        #### YOUR CODE HERE
+        if model.name == "team":
+            pred = proba.mean()
+        else:
+            # Otherwise set `pred` to the first value
+            # of the predict_proba output
             #### YOUR CODE HERE
-            proba = self.predictor.predict_proba(data)[:, 1]
+            pred = next(iter(proba), 0)
 
-            # Below, create a `pred` variable set to
-            # the number we want to visualize
-            #
-            # If the model's name attribute is "team"
-            # We want to visualize the mean of the predict_proba output
-            #### YOUR CODE HERE
-            if model.name == "team":
-                pred = proba.mean()
-            else:
-                # Otherwise set `pred` to the first value
-                # of the predict_proba output
-                #### YOUR CODE HERE
-                pred = next(iter(proba), 0)
+        # Initialize a matplotlib subplot
+        fig, ax = plt.subplots()
 
-            # Initialize a matplotlib subplot
-            fig, ax = plt.subplots()
+        # Run the following code unchanged
+        ax.barh([""], [pred])
+        ax.set_xlim(0, 1)
+        ax.set_title("Predicted Recruitment Risk", fontsize=20)
 
-            # Run the following code unchanged
-            ax.barh([""], [pred])
-            ax.set_xlim(0, 1)
-            ax.set_title("Predicted Recruitment Risk", fontsize=20)
-
-            # pass the axis variable
-            # to the `.set_axis_styling`
-            # method
-            #### YOUR CODE HERE
-            self.set_axis_styling(ax, bordercolor="black", fontcolor="black")
-            return
+        # pass the axis variable
+        # to the `.set_axis_styling`
+        # method
+        #### YOUR CODE HERE
+        self.set_axis_styling(ax, bordercolor="black", fontcolor="black")
+        return
 
     # Create a subclass of combined_components/CombinedComponent
     # called Visualizations
