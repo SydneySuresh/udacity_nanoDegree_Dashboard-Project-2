@@ -5,7 +5,7 @@ from pathlib import Path
 # variable set to the absolute path
 # for the root of this project
 #### YOUR CODE HERE
-
+project_root = Path(__file__).resolve().parent
 # apply the pytest fixture decorator
 # to a `db_path` function
 #### YOUR CODE HERE
