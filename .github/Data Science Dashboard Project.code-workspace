@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../assets"
+		},
+		{
+			"path": "../python-package"
+		},
+		{
+			"path": "../report"
+		},
+		{
+			"path": "../src"
+		},
+		{
+			"path": "../tests"
+		}
+	]
+}
