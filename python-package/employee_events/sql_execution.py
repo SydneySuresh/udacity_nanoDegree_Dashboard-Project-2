@@ -3,37 +3,15 @@ from pathlib import Path
 from functools import wraps
 import pandas as pd
 
-# Using pathlib, create a `db_path` variable
-# that points to the absolute path for the `employee_events.db` file
-#### YOUR CODE HERE
+# Define db_path using pathlib to point to 'employee_events.db'
+db_path = Path(__file__).parent / 'employee_events.db'
 
-
-# OPTION 1: MIXIN
-# Define a class called `QueryMixin`
-class QueryMixin:
-    
-    # Define a method named `pandas_query`
-    # that receives an sql query as a string
-    # and returns the query's result
-    # as a pandas dataframe
-    #### YOUR CODE HERE
-
-    # Define a method named `query`
-    # that receives an sql_query as a string
-    # and returns the query's result as
-    # a list of tuples. (You will need
-    # to use an sqlite3 cursor)
-    #### YOUR CODE HERE
-    
-
- 
- # Leave this code unchanged
+# Leave this code unchanged
 def query(func):
     """
-    Decorator that runs a standard sql execution
-    and returns a list of tuples
+    Decorator that executes an SQL query and returns results as a list of tuples.
+    It connects to the database, runs the query, fetches results, and closes the connection.
     """
-
     @wraps(func)
     def run_query(*args, **kwargs):
         query_string = func(*args, **kwargs)
@@ -44,3 +22,20 @@ def query(func):
         return result
     
     return run_query
+
+# OPTION 1: MIXIN
+# Define a mixin class for database queries
+class QueryMixin:
+    
+    # Define a method to execute an SQL query and return a pandas DataFrame
+    def pandas_query(self, query: str) -> pd.DataFrame:
+        """Executes an SQL query and returns a pandas DataFrame."""
+        with connect(db_path) as conn:
+            return pd.read_sql_query(query, conn)
+
+    # Define a method to execute an SQL query and return results as a list of tuples
+    @query
+    def query(self, sql_query: str):
+        """Executes an SQL query and returns results as a list of tuples."""
+        return sql_query  # The decorator handles execution
+
