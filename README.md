@@ -1,3 +1,5 @@
+Project Overview
+This project addresses a critical business challenge for manufacturing companies: retaining top talent. 
 
 # Software Engineering for Data Scientists 
 
@@ -79,3 +81,11 @@ erDiagram
   employee ||--o{ employee_events : "employee_id"
   notes }o--o{ employee_events : ""
 ```
+Author
+Suresh Kannan - Udacity Data Scientist Nanodegree Student
+Acknowledgements
+o	Udacity instructors for project guidance and curriculum development
+o	Udacity reviewers for valuable feedback
+o	FastHTML developers for the lightweight web framework
+License
+No additional licenses are needed from the author to use, modify, or distribute this software in accordance with the MIT License terms.
