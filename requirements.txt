@@ -11,13 +11,16 @@ ipython
 anyio==4.9.0
 apsw==3.50.1.0
 apswutils==0.0.2
+asttokens==3.0.0
 beautifulsoup4==4.13.4
 certifi==2025.4.26
 click==8.2.1
 contourpy==1.3.2
 cycler==0.12.1
+decorator==5.2.1
 -e git+https://github.com/udacity/dsnd-dashboard-project.git@0f6de772d3af8da6c9332debada6f5aff23871b2#egg=employee_events&subdirectory=python-package
 exceptiongroup==1.3.0
+executing==2.2.0
 fastcore==1.8.2
 fastlite==0.1.4
 flake8==7.2.0
@@ -28,14 +31,22 @@ httptools==0.6.4
 httpx==0.28.1
 idna==3.10
 iniconfig==2.1.0
+ipython==8.37.0
 itsdangerous==2.2.0
+jedi==0.19.2
 joblib==1.5.1
 kiwisolver==1.4.8
+matplotlib-inline==0.1.7
 mccabe==0.7.0
 oauthlib==3.2.2
 packaging==25.0
+parso==0.8.4
+pexpect==4.9.0
 pillow==11.2.1
 pluggy==1.6.0
+prompt_toolkit==3.0.51
+ptyprocess==0.7.0
+pure_eval==0.2.3
 pycodestyle==2.13.0
 pyflakes==3.3.2
 Pygments==2.19.1
@@ -49,13 +60,17 @@ PyYAML==6.0.2
 six==1.17.0
 sniffio==1.3.1
 soupsieve==2.7
+stack-data==0.6.3
 starlette==0.47.0
 threadpoolctl==3.6.0
 tomli==2.2.1
+traitlets==5.14.3
 typing_extensions==4.14.0
 tzdata==2025.2
 uvicorn==0.34.3
 uvloop==0.21.0
 watchfiles==1.0.5
+wcwidth==0.2.13
 websockets==15.0.1
+
 
