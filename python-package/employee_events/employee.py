@@ -56,10 +56,10 @@ class Employee(QueryBase):
         # with an id equal to the id argument
         # YOUR CODE HERE
         query = f"""
-                    SELECT first_name || ' ' || last_name AS full_name
-                    FROM employee
-                    WHERE employee_id = {id}
-                """
+            SELECT first_name || ' ' || last_name AS full_name
+            FROM employee
+            WHERE employee_id = {id}
+        """
         return self.query(query)
 
     # Below is method with an SQL query
@@ -73,11 +73,12 @@ class Employee(QueryBase):
     def model_data(self, id):
 
         query = f"""
-                    SELECT SUM(positive_events) positive_events
-                         , SUM(negative_events) negative_events
-                    FROM {self.name}
-                    JOIN employee_events
-                        USING({self.name}_id)
-                    WHERE {self.name}.{self.name}_id = {id}
-                """
+            SELECT SUM(positive_events) positive_events,
+                   SUM(negative_events) negative_events
+            FROM {self.name}
+            JOIN employee_events
+                USING({self.name}_id)
+            WHERE {self.name}.{self.name}_id = {id}
+        """
         return self.pandas_query(query)
+
