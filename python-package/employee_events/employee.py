@@ -39,7 +39,7 @@ class Employee(QueryBase):
                 employee_id
             FROM employee
         """
-        return self.execute_query(query)
+        return self.query(query)
 
     # Define a method called `username`
     # that receives an `id` argument
