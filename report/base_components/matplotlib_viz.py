@@ -49,7 +49,7 @@ class MatplotlibViz(BaseComponent):
     def visualization(self, entity_id, model):
         pass
 
-    def set_axis_styling(self, ax, bordercolor='white', fontcolor='white'):
+    def set_axis_styling(self, ax, bordercolor='black', fontcolor='black'):
         
         ax.title.set_color(fontcolor)
         ax.xaxis.label.set_color(fontcolor)

@@ -120,7 +120,7 @@ class LineChart(MatplotlibViz):
         # Reference the base_components/matplotlib_viz file
         # to inspect the supported keyword arguments
         # YOUR CODE HERE
-        self.set_axis_styling(ax, border_color='black', font_color='black')
+        self.set_axis_styling(ax, bordercolor='black', fontcolor='black')
         # Set title and labels for x and y axis
         # YOUR CODE HERE
         ax.set_title('Cumulative Performance Events')
@@ -183,7 +183,7 @@ class BarChart(MatplotlibViz):
         # to the `.set_axis_styling`
         # method
         # YOUR CODE HERE
-        self.set_axis_styling(ax, border_color='black', font_color='black')
+        self.set_axis_styling(ax, bordercolor='black', fontcolor='black')
         return fig
 
 
