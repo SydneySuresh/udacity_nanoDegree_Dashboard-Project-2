@@ -1,6 +1,24 @@
 Project Overview
 This project addresses a critical business challenge for manufacturing companies: retaining top talent. 
 
+Installation Steps:
+
+Creating New Environment and loading packages: 
+
+ python -m venv new_env_01
+ 
+source new_env_01/bin/activate
+
+pip install -r requirements.txt
+
+pip install -e ./python-package
+
+Running the Dashboard:
+
+python -m report.dashboard
+
+
+
 # Software Engineering for Data Scientists 
 
 This repository contains starter code for the **Software Engineering for Data Scientists** final project. Please reference your course materials for documentation on this repository's structure and important files. Happy coding!
@@ -81,11 +99,23 @@ erDiagram
   employee ||--o{ employee_events : "employee_id"
   notes }o--o{ employee_events : ""
 ```
+
+![image](https://github.com/user-attachments/assets/d9fee0eb-a8ff-4747-9de1-4d1809430640)
+
+
+
 Author
+
 Suresh Kannan - Udacity Data Scientist Nanodegree Student
+
 Acknowledgements
+
 o	Udacity instructors for project guidance and curriculum development
+
 o	Udacity reviewers for valuable feedback
+
 o	FastHTML developers for the lightweight web framework
+
 License
+
 No additional licenses are needed from the author to use, modify, or distribute this software in accordance with the MIT License terms.
